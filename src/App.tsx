@@ -1,10 +1,18 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import { useRoutes } from './routes';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Navbar } from './components/Navbar';
 
-function App() {
-  return (
-    <h1>Hello world!</h1>
-  );
-}
+export const App = () => {
 
-export default App;
+const routes = useRoutes(false);
+
+return (
+	<Router>
+		<Navbar />
+		<div className="container">
+			{ routes }
+		</div>
+	</Router>
+);}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+$navbar_bg: #9DBEBC;
+$navbar_height: 90px;
+$navbar_height_mobile: 45px;
+$container_bg: #F5F3F3;
+$font-family: Lato, sans-serif;
+$button_main_color: #3B5574;
+$button_additional_color: #5F7978;
+$button_borderless_color: transparent;
+
+.container {
+    margin: 0 auto;
+    max-width: 1366px;
+}
+
+@media(max-width: 720px) {
+    .container {
+        padding-top: $navbar_height_mobile;
+    }
+}
+
+@media(min-width: 721px) {
+    .container {
+        padding: 0 150px;
+        padding-top: $navbar_height;
+    }
+}

@@ -1,7 +1,10 @@
+@import './App.scss';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: $font-family;
 }
 
 body {
@@ -12,5 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $container_bg;
+  min-height: 100vh;
 }
 

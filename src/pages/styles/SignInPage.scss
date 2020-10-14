@@ -1,0 +1,85 @@
+@import '../../App.scss';
+
+.signin-page {
+    margin-top: 54px;
+    display: flex;
+    justify-content: space-between;
+
+    &__banner {
+        max-width: 550px;
+        max-height: 393px;
+    }
+
+    &-m {
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 45px);
+
+        &__input-container {
+
+            >*:first-child {
+                margin-bottom: 14px;
+            }
+        }
+
+        &__button-container {
+            margin-top: 27px;
+
+            >*:first-child {
+                margin-bottom: 7px;
+            }
+        }
+
+        &__header {
+            background-color: white;
+            padding: 5vh 10vw;
+            
+            h1 {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 25px;
+                line-height: 30px;
+                color: #324A49;
+            }
+        }
+
+        &__form {
+            background-color: #9DBEBC;
+            flex: 1;
+            padding: 0 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &__content {
+                width: 100%;
+            } 
+
+            input {
+                display: block;
+                background-color: #FCFBFB;
+                border: none;
+                border-radius: 9px;
+                outline: none;
+                height: 56px;
+                width: 100%;
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        &__footer {
+            background-color: white;
+            padding: 5vh 10vw;
+
+            h2 {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 22px;
+                line-height: 26px;
+                color: #000000;
+                margin-bottom: 24px;
+            }
+        }
+    }
+}

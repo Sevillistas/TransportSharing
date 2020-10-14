@@ -1,0 +1,64 @@
+@import '../../App.scss';
+
+.button {
+    padding: 8px 35px;
+    border-radius: 9px;
+    border: none;
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+
+    &.signin {
+        background-color: $button_main_color;
+        
+        &-mobile {
+            font-weight: bold;
+            font-size: 19px;
+            line-height: 23px;
+            padding: 12px 30px;
+            background-color: #3B5574;
+            margin: 0 auto;
+            display: block;
+            border-radius: 10px;
+        }
+    }
+
+    &.signup {
+        background-color: $button_additional_color;
+
+        &-mobile {
+            padding: 0;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            background-color: $button_borderless_color;
+            color: #3C4856;
+        }
+    }
+
+    &.forgetpass {
+        padding: 8px 0;
+        background-color: $button_borderless_color;
+        color: $button_main_color;
+
+        &-mobile {
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 16px;
+            background-color: $button_borderless_color;
+            color: #3B5574;
+            margin: 0 auto;
+            padding: 0;
+            display: block;
+        }
+    }
+
+
+}
