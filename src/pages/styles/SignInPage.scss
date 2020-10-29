@@ -66,6 +66,9 @@
                 padding: 12px 24px;
                 font-size: 18px;
             }
+            input::placeholder {
+                color: #BDBEBE;
+            }
         }
 
         &__footer {

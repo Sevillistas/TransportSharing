@@ -1,8 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { Button, ButtonParams } from './Button';
-import './styles/Form.scss';
+import './styles/SignInForm.scss';
 
-export const Form = () => {
+export const SignInForm = () => {
+
+    const history = useHistory();
 
     const signInButton: ButtonParams = {
         text: 'Войти',
@@ -19,21 +22,23 @@ export const Form = () => {
     const signUpButton: ButtonParams = {
         text: 'Зарегистрироваться',
         type: 'signup',
-        action: () => {}
+        action: () => {
+            history.push('/register');
+        }
     }
 
     return(
-        <div className='form'>
-            <div className='form__input-container'>
-                <input type='text' className='form__input'/>
-                <input type="password" className='form__input'/>
+        <div className='signin-form'>
+            <div className='signin-form__input-container'>
+                <input type='text' className='signin-form__input' placeholder='Номер телефона'/>
+                <input type="password" className='signin-form__input' placeholder='Пароль'/>
             </div>
-            <div className="form__button-container">
-                <div className="button-container__row">
+            <div className="signin-form__button-container">
+                <div className="signin-form__button-container__row">
                     <Button {...signInButton} />
                     <Button {...forgotPasswordButton} />
                 </div>
-                <div className="button-container__row">
+                <div className="signin-form__button-container__row">
                     <Button {...signUpButton} />
                 </div>
             </div>

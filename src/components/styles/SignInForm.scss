@@ -1,4 +1,6 @@
-.form {
+@import '../../App.scss';
+
+.signin-form {
     padding: 35px;
     width: 440px;
     background-color: white;
@@ -14,6 +16,10 @@
         width: 100%;
         padding: 12px 24px;
         font-size: 18px;
+        
+        &::placeholder {
+            font-family: $font-family;
+        }
     }
 
     &__input-container {
@@ -30,17 +36,15 @@
         >*:not(:last-child) {
             margin-bottom: 35px;
         }
-    }
 
-}
+        &__row {
 
-.button-container {
-    &__row {
-
-        display: flex;
-
-        >*:first-child:not(:last-child) {
-            margin-right: 25px;
+            display: flex;
+    
+            >*:first-child:not(:last-child) {
+                margin-right: 25px;
+            }
         }
     }
+
 }

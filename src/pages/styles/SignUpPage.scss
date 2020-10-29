@@ -1,0 +1,100 @@
+@import '../../App.scss';
+
+.signup {
+    &-page {
+        margin-top: 54px;
+    }
+    
+    &-form {
+        width: 850px;
+        background-color: white;
+        padding: 35px;
+        border-radius: 8px;
+
+        &__header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            font-family: $font-family;
+            font-weight: 800;
+            font-size: 33px;
+            line-height: 40px;
+            color: #3B5574;
+        }
+
+        &__content {
+            display: flex;
+        }
+
+        &__left-col {
+            flex: 1;
+            margin-right: 100px;
+
+            >input:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &__right-col {
+            min-width: 310px;
+
+            >*:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &__input {
+            display: block;
+            width: 100%;
+
+            padding: 16px 18px;
+
+            background: rgba(185, 215, 213, 0.45);
+            border-radius: 9px;
+            border: none;
+
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+            outline: none;
+
+            &:focus {
+                box-shadow: inset 0 0 7px rgba(185, 215, 213, 0.8);
+            }
+
+            &::placeholder {
+                color: #3C4856;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 24px;
+            }
+
+            &.shrink {
+                width: 75%;
+            }
+        }
+
+        &__select {
+
+            &__control {
+
+                padding: 16px 18px !important;
+                background-color: rgba(185, 215, 213, 0.45) !important;
+                border-radius: 9px !important;
+                border: none !important;
+                min-width: 113px !important;
+                width: 113px !important;
+                max-height: 56px !important;
+            }
+
+            &__value-container {
+                padding: 0 !important;
+            }
+
+            &__indicator-separator {
+                background-color: transparent;
+                display: none;
+            }
+        }
+    }
+}

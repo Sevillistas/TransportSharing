@@ -15,6 +15,15 @@
     outline: none;
     white-space: nowrap;
 
+    &:hover, &:focus {
+        opacity: 0.8;
+        filter: drop-shadow(0 0 2px rgba(0, 0 , 0, .2));
+    }
+
+    &:active {
+        opacity: 0.6;
+    }
+
     &.signin {
         background-color: $button_main_color;
         

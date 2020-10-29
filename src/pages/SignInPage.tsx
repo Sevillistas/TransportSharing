@@ -1,18 +1,23 @@
 import React from 'react';
-import { Form } from '../components/Form';
+import { SignInForm } from '../components/SignInForm';
 import './styles/SignInPage.scss';
 import bannerImage from '../images/banner.png';
 import { useWindowDimensions } from '../hooks/windowresize.hook';
 import { Button, ButtonParams } from '../components/Button';
+import { useHistory } from 'react-router';
 
 export const SignInPage = () => {
 
     const { width } = useWindowDimensions();
 
+    const history = useHistory();
+
     const signUpButton: ButtonParams = {
         text: 'Зарегистрироваться',
         type: 'signup-mobile',
-        action: () => {}
+        action: () => {
+            history.push('/register');
+        }
     }
 
     const signInButton: ButtonParams = {
@@ -33,7 +38,7 @@ export const SignInPage = () => {
                 <div className="signin-page__banner">
                     <img src={bannerImage} alt="banner"/>
                 </div>
-                <Form />
+                <SignInForm />
             </div>
         )
     } else {
@@ -47,8 +52,8 @@ export const SignInPage = () => {
                 <div className="signin-page-m__form">
                     <div className="signin-page-m__form__content">
                         <div className="signin-page-m__input-container">
-                            <input type="text"/>
-                            <input type="password" />
+                            <input type="text" placeholder='Номер телефона'/>
+                            <input type="password" placeholder='Пароль'/>
                         </div>
                         <div className="signin-page-m__button-container">
                             <Button {...signInButton}/>
