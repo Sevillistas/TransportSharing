@@ -1,10 +1,10 @@
 import React from 'react';
-import { SignInForm } from '../components/SignInForm';
+import {SignInForm} from '../components/SignInForm';
 import './styles/SignInPage.scss';
 import bannerImage from '../images/banner.png';
-import { useWindowDimensions } from '../hooks/windowresize.hook';
-import { Button, ButtonParams } from '../components/Button';
-import { useHistory } from 'react-router';
+import {useWindowDimensions} from '../hooks/windowresize.hook';
+import {Button, ButtonParams} from '../components/Button';
+import {useHistory} from 'react-router';
 
 export const SignInPage = () => {
 
@@ -23,7 +23,9 @@ export const SignInPage = () => {
     const signInButton: ButtonParams = {
         text: 'Вход',
         type: 'signin-mobile',
-        action: () => {}
+        action: () => {
+            history.push('/success')
+        }
     }
 
     const forgetPasswordButton: ButtonParams = {

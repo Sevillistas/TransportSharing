@@ -1,6 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router';
-import { Button, ButtonParams } from './Button';
+import {useHistory} from 'react-router';
+import {Button, ButtonParams} from './Button';
 import './styles/SignInForm.scss';
 
 export const SignInForm = () => {
@@ -10,7 +10,9 @@ export const SignInForm = () => {
     const signInButton: ButtonParams = {
         text: 'Войти',
         type: 'signin',
-        action: () => {}
+        action: () => {
+            history.push('/success');
+        }
     }
 
     const forgotPasswordButton: ButtonParams = {

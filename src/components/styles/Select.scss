@@ -1,0 +1,43 @@
+.select {
+    &-container {
+
+    }
+    &__input-field {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        min-width: 110px;
+        padding: 16px 18px;
+        background: rgba(185, 215, 213, 0.45);
+        border-radius: 9px;
+        border: none;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        outline: none;
+
+        &.opened {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        }
+    }
+    //&__value {
+    //    margin-right: 19px;
+    //}
+    &__option {
+        display: block;
+        width: 100%;
+        padding: 8px 18px;
+        background: rgba(185, 215, 213, 0.30);
+        border: none;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        outline: none;
+        &:last-child {
+            border-bottom-right-radius: 9px;
+            border-bottom-left-radius: 9px;
+        }
+    }
+}

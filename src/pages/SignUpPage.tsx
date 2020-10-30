@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { useWindowDimensions } from '../hooks/windowresize.hook';
+import React, {useState} from 'react';
+import {useWindowDimensions} from '../hooks/windowresize.hook';
 import './styles/SignUpPage.scss';
-import { Select } from '../components/Select';
+import {Select} from '../components/Select';
+import plus from '../images/plus.svg'
+import {Button} from "../components/Button";
 
 export interface SelectOption {
     value: string;
@@ -55,11 +57,26 @@ export const SignUpPage = () => {
                                 placeholder='Возраст'/>
                                 <Select options={selectOptions} onChange={onSelectSex} />
                             </div>
-                            <div className="signup-form__row"></div>
+                            <div className="signup-form__row">
+                                <div className="signup-form__advice">
+                                    <h2>Загрузите фото</h2>
+                                    <h3>Это повысит доверие среди
+                                        <br/>других пользователей</h3>
+                                </div>
+                                <div className="signup-form__photo">
+                                    <img src={plus} alt=""/>
+                                    <span>фото</span>
+                                    {/*TODO*/}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="signup-form__footer">
-                        
+                        <Button text={'Зарегистрироваться'} type={'signup'}/>
+                        <div className="signup-form__info">
+                            Нажимая “Зарегистрироваться”, Вы подтверждаете свое согласие<br/>
+                            на обработку ваших <u>персональных данных</u>
+                        </div>
                     </div>    
                 </div>
             </div>
