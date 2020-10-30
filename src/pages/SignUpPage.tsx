@@ -4,6 +4,7 @@ import './styles/SignUpPage.scss';
 import {Select} from '../components/Select';
 import plus from '../images/plus.svg'
 import {Button} from "../components/Button";
+import {useHistory} from "react-router";
 
 export interface SelectOption {
     value: string;
@@ -11,6 +12,8 @@ export interface SelectOption {
 }
 
 export const SignUpPage = () => {
+
+    const history = useHistory();
 
     const { width } = useWindowDimensions();
 
@@ -72,7 +75,7 @@ export const SignUpPage = () => {
                         </div>
                     </div>
                     <div className="signup-form__footer">
-                        <Button text={'Зарегистрироваться'} type={'signup'}/>
+                        <Button text={'Зарегистрироваться'} type={'signup'} action={() => history.push('/')}/>
                         <div className="signup-form__info">
                             Нажимая “Зарегистрироваться”, Вы подтверждаете свое согласие<br/>
                             на обработку ваших <u>персональных данных</u>
