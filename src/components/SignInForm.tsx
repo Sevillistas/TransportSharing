@@ -10,9 +10,26 @@ export const SignInForm = () => {
     const signInButton: ButtonParams = {
         text: 'Войти',
         type: 'signin',
-        action: () => {
-            history.push('/success');
+        action: async() => {
+            try {
+                await signIn()
+                history.push('/success');
+            } catch (e) {
+                console.log(e)
+            }
         }
+    }
+
+    const signIn = async() => {
+        const response = await fetch('/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({login: 'thisIsLogin', password: 'thisIsPassword'})
+        })
+        const data = await response.json();
+        console.log(data);
     }
 
     const forgotPasswordButton: ButtonParams = {
