@@ -1,16 +1,36 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {SignInForm} from '../components/SignInForm';
 import './styles/SignInPage.scss';
 import bannerImage from '../images/banner.png';
 import {useWindowDimensions} from '../hooks/windowresize.hook';
 import {Button, ButtonParams} from '../components/Button';
 import {useHistory} from 'react-router';
+import {signIn} from "../services/auth.service";
 
 export const SignInPage = () => {
 
     const { width } = useWindowDimensions();
 
     const history = useHistory();
+
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
+
+    const validateForm = useCallback(() => {
+        //TODO
+        let valid = false;
+        if (login) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+        if (password && password.length >= 8) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+        return valid;
+    }, [login, password]);
 
     const signUpButton: ButtonParams = {
         text: 'Зарегистрироваться',
@@ -23,8 +43,18 @@ export const SignInPage = () => {
     const signInButton: ButtonParams = {
         text: 'Вход',
         type: 'signin-mobile',
-        action: () => {
-            history.push('/success')
+        action: async() => {
+            if (validateForm()) {
+                await signIn(login, password).then(
+                    () => {
+                        history.push('/success');
+                    }, error => {
+                        console.log(error);
+                    }
+                );
+            } else {
+                console.log('Validation error');
+            }
         }
     }
 
@@ -54,8 +84,12 @@ export const SignInPage = () => {
                 <div className="signin-page-m__form">
                     <div className="signin-page-m__form__content">
                         <div className="signin-page-m__input-container">
-                            <input type="text" placeholder='Номер телефона'/>
-                            <input type="password" placeholder='Пароль'/>
+                            <input type="text" placeholder='Номер телефона' onChange={ event => {
+                                setLogin(event.target.value)
+                            }}/>
+                            <input type="password" placeholder='Пароль' onChange={ event => {
+                                setPassword(event.target.value)
+                            }}/>
                         </div>
                         <div className="signin-page-m__button-container">
                             <Button {...signInButton}/>
