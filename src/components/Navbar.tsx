@@ -5,9 +5,8 @@ import {useHistory} from "react-router";
 export const Navbar = () => {
 
     const history = useHistory();
-
     return (
-        <nav>
+        <nav className='navbar'>
             <div className="navbar-container">
                 <div className="navbar-logo" onClick={() => history.push('/')}>
                     Transport<br/>

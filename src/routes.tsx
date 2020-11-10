@@ -3,6 +3,7 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import {SignInPage} from './pages/SignInPage';
 import {SignUpPage} from './pages/SignUpPage';
 import {SignInSuccessPage} from "./pages/SignInSuccessPage";
+import {MainPage} from "./pages/MainPage";
 
 export const useRoutes = (isAuth: boolean) => {
     if (isAuth) {
@@ -14,7 +15,8 @@ export const useRoutes = (isAuth: boolean) => {
     } else {
         return (
             <Switch>
-                <Route path='/' exact>
+                <Route path='/' component={MainPage}/>
+                <Route path='/login' exact>
                     <SignInPage />
                 </Route>
                 <Route path='/register' exact>
@@ -23,7 +25,7 @@ export const useRoutes = (isAuth: boolean) => {
                 <Route path='/success' exact>
                     <SignInSuccessPage />
                 </Route>
-                <Redirect to='/' />
+                <Redirect to='/search' />
             </Switch>
         )
     }

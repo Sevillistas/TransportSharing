@@ -1,11 +1,9 @@
 @import '../../App.scss';
 
-nav {
+.navbar {
     position: fixed;
     width: 100%;
-}
 
-.navbar {
     &-container {
         max-width: 1366px;
         margin: 0 auto;
@@ -25,12 +23,11 @@ nav {
 }
 
 @media(max-width: 720px) {
-    nav {
-        min-height: 45px;
-        background-color: #fff;
-    }
 
     .navbar {
+        min-height: 45px;
+        background-color: #fff;
+
         &-container {
             height: 45px;
             padding: 0 12px;
@@ -46,12 +43,11 @@ nav {
 }
 
 @media(min-width: 721px) {
-    nav {
-        min-height: 90px;
-        background-color: $navbar_bg;
-    }
 
     .navbar {
+        min-height: 90px;
+        background-color: $navbar_bg;
+
         &-container {
             padding: 0 150px;
             height: 90px;

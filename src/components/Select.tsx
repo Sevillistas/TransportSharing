@@ -23,7 +23,7 @@ export const Select = (props: any) => {
                     <img src={showOptions}/>
                 </div>
             </div>
-            { optionsVisible && <div className="select__options-container">
+            { optionsVisible && <div className="select__option-container">
                 { props.options.map((option: SelectOption) => {
                     return <div className='select__option' key={option.value} 
                     onClick={() => {

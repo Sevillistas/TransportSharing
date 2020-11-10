@@ -39,5 +39,12 @@
             border-bottom-right-radius: 9px;
             border-bottom-left-radius: 9px;
         }
+
+        &-container {
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
     }
 }
