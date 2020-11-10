@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useRouteMatch} from "react-router-dom";
 import './styles/MainPage.scss';
 import {useMainPageRoutes} from "../routes/mainPageRoutes";
 import {PlannedRides} from "../rides/PlannedRides/PlannedRides";
@@ -7,6 +7,7 @@ import {PlannedRides} from "../rides/PlannedRides/PlannedRides";
 export const MainPage = () => {
 
     const routes = useMainPageRoutes();
+    const { url } = useRouteMatch();
 
     return(
         <div className='main-page'>
@@ -14,13 +15,13 @@ export const MainPage = () => {
                 <nav className="main-page__nav">
                     <ul>
                         <li>
-                            <NavLink to='/search' activeClassName="main-page__link-active">Найти поездку</NavLink>
+                            <NavLink to={`${url}/search`}  activeClassName="main-page__link-active">Найти поездку</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/create' activeClassName="main-page__link-active">Предложить поездку</NavLink>
+                            <NavLink to={`${url}/create`} activeClassName="main-page__link-active">Предложить поездку</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/history' activeClassName="main-page__link-active">История поездок</NavLink>
+                            <NavLink to={`${url}/history`} activeClassName="main-page__link-active">История поездок</NavLink>
                         </li>
                     </ul>
                 </nav>

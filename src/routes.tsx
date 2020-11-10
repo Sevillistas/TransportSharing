@@ -15,7 +15,7 @@ export const useRoutes = (isAuth: boolean) => {
     } else {
         return (
             <Switch>
-                <Route path='/' component={MainPage}/>
+                <Route path='/main' component={MainPage}/>
                 <Route path='/login' exact>
                     <SignInPage />
                 </Route>
@@ -25,7 +25,7 @@ export const useRoutes = (isAuth: boolean) => {
                 <Route path='/success' exact>
                     <SignInSuccessPage />
                 </Route>
-                <Redirect to='/search' />
+                <Redirect to='/main' />
             </Switch>
         )
     }
