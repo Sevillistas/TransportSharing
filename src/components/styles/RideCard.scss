@@ -1,0 +1,55 @@
+.ride-card {
+    background: #F6F9F1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    padding: 10px 12px;
+    min-width: 275px;
+
+    &:not(:last-child){
+        margin-bottom: 35px;
+    }
+
+    &__date {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+        margin-bottom: 8px;
+    }
+
+    &__address-container {
+        display: flex;
+    }
+
+    &__decoration {
+        padding-left: 4px;
+        margin-right: 16px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__street {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+    }
+
+    &__distance {
+        margin-top: 4px;
+        font-weight: 600;
+        font-size: 9px;
+        line-height: 11px;
+        color: #3C4856;
+    }
+
+    &__address{
+        &:first-child {
+            margin-bottom: 4px;
+        }
+    }
+
+    &__addresses-wrapper{
+        flex: 1;
+    }
+}

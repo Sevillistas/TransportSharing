@@ -1,6 +1,6 @@
 .select {
     &-container {
-
+        position: relative;
     }
     &__input-field {
         display: flex;
@@ -29,7 +29,7 @@
         display: block;
         width: 100%;
         padding: 8px 18px;
-        background: rgba(185, 215, 213, 0.30);
+        background: rgb(185, 215, 213);
         border: none;
         font-weight: 600;
         font-size: 16px;
@@ -41,7 +41,8 @@
         }
 
         &-container {
-            top: 0;
+            position: absolute;
+            top: 56px; //equal to height of input
             left: 0;
             right: 0;
             z-index: 100;

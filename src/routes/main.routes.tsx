@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {RideTypes} from "../rides/RideTypes/RideTypes";
 import {SearchRides} from "../rides/SearchRides/SearchRides";
+import {SearchResult} from "../rides/SearchResult/SearchResult";
 
 export const useMainRoutes = () => {
     return (
@@ -14,6 +15,9 @@ export const useMainRoutes = () => {
             </Route>
             <Route path='/main/search-form'  exact>
                 <SearchRides/>
+            </Route>
+            <Route path='/main/search-results' exact>
+                <SearchResult/>
             </Route>
             <Route path='/main/create' exact>
                 <p>Create</p>

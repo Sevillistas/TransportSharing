@@ -41,6 +41,26 @@ export const SearchRides = () => {
         }
     }, [location]);
 
+    const searchRides = async() => {
+        try {
+            const rideInfo = {
+                startAddress: { x: 13.37, y: 2.28 },
+                destinationAddress: { x: 14.88, y: 3.22 },
+                peopleAmount: passengerCount,
+                rideDate: date
+            };
+            const response = await fetch('/find-rides', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(rideInfo)
+            })
+            const data = await response.json();
+            console.log(data)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return (
         <div className='search-rides'>
             <div className="search-rides__label">Откуда Вы хотите поехать?</div>
@@ -57,7 +77,8 @@ export const SearchRides = () => {
                 <input type="date" className="search-rides__input date"
                     onChange={event => setDate(event.target.value)} />
             </div>
-            <Button text='Поиск подходящих поездок' type='default' action={() => console.log(rideType)} />
+            <Button text='Поиск подходящих поездок' type='default' action={() => searchRides()} />
+            {/*history.push('/main/search-results')*/}
         </div>
     )
 }

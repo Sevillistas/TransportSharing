@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavLink, useRouteMatch} from "react-router-dom";
 import './styles/MainPage.scss';
 import {useMainRoutes} from "../routes/main.routes";
 import {PlannedRides} from "../rides/PlannedRides/PlannedRides";
+import {useHistory} from 'react-router';
 
 export const MainPage = () => {
 
     const routes = useMainRoutes();
     const { url } = useRouteMatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        history.push('/main/search');
+    }, []);
 
     return(
         <div className='main-page'>

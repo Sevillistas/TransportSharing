@@ -1,5 +1,4 @@
-import React from 'react';
-import './PlannedRides.scss';
+import React, {useState} from 'react';
 import {RideCard} from "../../components/RideCard";
 
 const plannedRides = [
@@ -19,10 +18,16 @@ const plannedRides = [
     }
 ]
 
-export const PlannedRides = () => {
+export const SearchResult = () => {
+
+    const [rides, setRides] = useState([]);
+
     return(
-        <div className='planned-rides'>
-            { plannedRides.map(ride => (<RideCard ride={ride} key={ride.date}/>)) }
+        <div className='search-result'>
+            <div className="search-result__title">По вашему запросу найдено {rides.length || '0'} поездки</div>
+            <div className="search-result__container">
+                { plannedRides && plannedRides.map(ride => (<RideCard ride={ride} key={ride.date} />)) }
+            </div>
         </div>
     )
 }
