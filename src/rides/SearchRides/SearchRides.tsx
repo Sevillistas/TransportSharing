@@ -47,7 +47,7 @@ export const SearchRides = () => {
                 startAddress: { x: 13.37, y: 2.28 },
                 destinationAddress: { x: 14.88, y: 3.22 },
                 peopleAmount: passengerCount,
-                rideDate: date
+                rideDate: new Date(date)
             };
             const response = await fetch('/find-rides', {
                 method: 'POST',
