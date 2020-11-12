@@ -1,0 +1,54 @@
+.search-rides {
+    width: 440px;
+
+    &__label {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+        margin-bottom: 20px;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+
+        padding: 16px 18px;
+
+        background-color: rgba(185, 215, 213, 0.45);
+        border-radius: 9px;
+        border: none;
+
+        max-height: 56px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        outline: none;
+
+        &:focus {
+            box-shadow: inset 0 0 7px rgba(185, 215, 213, 0.8);
+        }
+
+        &::placeholder {
+            color: #BDBEBE;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        margin-bottom: 26px;
+
+        &.date {
+            max-width: 240px;
+        }
+    }
+
+    &__input-container {
+        display: flex;
+    }
+
+    &__select {
+        max-width: 66px;
+        margin-right: 25px;
+    }
+}

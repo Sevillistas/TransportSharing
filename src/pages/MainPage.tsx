@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavLink, useRouteMatch} from "react-router-dom";
 import './styles/MainPage.scss';
-import {useMainPageRoutes} from "../routes/mainPageRoutes";
+import {useMainRoutes} from "../routes/main.routes";
 import {PlannedRides} from "../rides/PlannedRides/PlannedRides";
 
 export const MainPage = () => {
 
-    const routes = useMainPageRoutes();
+    const routes = useMainRoutes();
     const { url } = useRouteMatch();
 
     return(

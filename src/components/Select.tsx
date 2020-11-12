@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {SelectOption} from '../pages/SignUpPage';
 import './styles/Select.scss';
 import showOptions from '../images/chooseButton.svg';
 
+export interface SelectOption {
+    value: any;
+    label: string;
+}
+
 export const Select = (props: any) => {
 
-    const [value, setValue] = useState('Пол');
+    const [value, setValue] = useState(props.defaultValue);
     const [optionsVisible, setOptionsVisible] = useState(false);
     const [inputClass, setInputClass] = useState('');
 

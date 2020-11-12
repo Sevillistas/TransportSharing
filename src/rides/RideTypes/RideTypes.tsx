@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './RideTypes.scss';
 import taxi from '../../images/taxi_logo.png';
 import carsharing from '../../images/carsharing_logo.png';
 import anyRide from '../../images/any_ride_logo.png';
-
+import {useHistory} from "react-router";
 
 export const RideTypes = () => {
+
+    const [rideType, setRideType] = useState('');
+    const history = useHistory();
+
+    useEffect(() => {
+        if (rideType) {
+            history.push('/main/search-form', {rideType});
+        }
+    }, [rideType])
+
     return(
         <div className='ride-types-container'>
-            <div className="ride-type">
+            <div className="ride-type" onClick={() => setRideType('taxi')}>
                 <div className="ride-type__image-container">
                     <img className="ride-type__image" src={taxi} alt="car_type"/>
                 </div>
@@ -21,7 +31,7 @@ export const RideTypes = () => {
                     </div>
                 </div>
             </div>
-            <div className="ride-type">
+            <div className="ride-type" onClick={() => setRideType('carsharing')}>
                 <div className="ride-type__image-container">
                     <img className="ride-type__image" src={carsharing} alt="car_type"/>
                 </div>
@@ -37,7 +47,7 @@ export const RideTypes = () => {
                     </div>
                 </div>
             </div>
-            <div className="ride-type">
+            <div className="ride-type" onClick={() => setRideType('any')}>
                 <div className="ride-type__image-container">
                     <img className="ride-type__image" src={anyRide} alt="car_type"/>
                 </div>

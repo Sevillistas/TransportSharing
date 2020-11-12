@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
 import {useWindowDimensions} from '../hooks/windowresize.hook';
 import './styles/SignUpPage.scss';
-import {Select} from '../components/Select';
+import {Select, SelectOption} from '../components/Select';
 import plus from '../images/plus.svg'
 import {Button} from "../components/Button";
 import {useHistory} from "react-router";
-
-export interface SelectOption {
-    value: string;
-    label: string;
-}
 
 export const SignUpPage = () => {
 
@@ -28,11 +23,6 @@ export const SignUpPage = () => {
         setSex(value);
         console.log(value);
     }
-
-    // const select = <Select options={selectOptions} 
-    // className='signup-form__select-container'
-    // classNamePrefix="signup-form__select"
-    // placeholder='Пол' />
 
     if (width > 720) {
         return (
@@ -58,7 +48,7 @@ export const SignUpPage = () => {
                             <div className="signup-form__row">
                                 <input type="text" className="signup-form__input"
                                 placeholder='Возраст'/>
-                                <Select options={selectOptions} onChange={onSelectSex} />
+                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectSex} />
                             </div>
                             <div className="signup-form__row">
                                 <div className="signup-form__advice">
