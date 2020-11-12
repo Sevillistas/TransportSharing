@@ -22,7 +22,7 @@ const plannedRides = [
 export const PlannedRides = () => {
     return(
         <div className='planned-rides'>
-            { plannedRides.map(ride => (<RideCard ride={ride} key={ride.date}/>)) }
+            { plannedRides.map(ride => (<RideCard ride={ride} key={ride.date} />)) }
         </div>
     )
 }

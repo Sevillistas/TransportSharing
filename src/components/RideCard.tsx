@@ -2,11 +2,12 @@ import React from 'react';
 import route from "../images/route.png";
 import './styles/RideCard.scss';
 
+export const RideCard = ({ride, searchResult}: any) => {
 
-export const RideCard = ({ride}: any) => {
+    const fromSearch = searchResult && 'from-search';
 
     return (
-        <div className='ride-card' key={ride.date}>
+        <div className={`ride-card ${fromSearch}`}  key={ride.date}>
             <div className="ride-card__date">{ride.date}</div>
             <div className="ride-card__address-container">
                 <div className="ride-card__decoration">
@@ -23,6 +24,7 @@ export const RideCard = ({ride}: any) => {
                     </div>
                 </div>
             </div>
+            { searchResult && <div className="ride-card__places">Места: <span>{ride.freePlaces}/{ride.allPlaces}</span></div> }
         </div>
     )
 }

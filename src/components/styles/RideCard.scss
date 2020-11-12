@@ -4,6 +4,11 @@
     border-radius: 9px;
     padding: 10px 12px;
     min-width: 275px;
+    max-width: 310px;
+
+    &.from-search {
+        background: #E9F1F1;
+    }
 
     &:not(:last-child){
         margin-bottom: 35px;
@@ -51,5 +56,19 @@
 
     &__addresses-wrapper{
         flex: 1;
+    }
+
+    &__places {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+        margin-top: 8px;
+
+        >span {
+            margin-left: 8px;
+            color: #A2BE9D;
+        }
     }
 }

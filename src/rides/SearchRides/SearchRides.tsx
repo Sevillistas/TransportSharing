@@ -76,8 +76,9 @@ export const SearchRides = () => {
                 <input type="date" className="search-rides__input date"
                     onChange={event => setDate(event.target.value)} />
             </div>
-            <Button text='Поиск подходящих поездок' type='default' action={() => searchRides()} />
-            {/*history.push('/main/search-results')*/}
+            <Button text='Поиск подходящих поездок' type='default' action={() => {
+                history.push('/main/search-results')
+            }} />
         </div>
     )
 }
