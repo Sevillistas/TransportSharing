@@ -9,8 +9,8 @@ export interface SelectOption {
 
 interface SelectProps {
     defaultValue: string | number;
-    options: SelectOption[];
-    onChange: any;
+    options?: SelectOption[];
+    onChange?: any;
 }
 
 export const Select = ({defaultValue, options, onChange} : SelectProps) => {
@@ -34,10 +34,10 @@ export const Select = ({defaultValue, options, onChange} : SelectProps) => {
                 </div>
             </div>
             { optionsVisible && <div className="select__option-container">
-                { options.map((option: SelectOption) => {
+                { options && options.map((option: SelectOption) => {
                     return <div className='select__option' key={option.value} 
                     onClick={() => {
-                        setValue(option.value);
+                        setValue(option.label);
                         setOptionsVisible(!optionsVisible)
                         onChange(option.value);
                     }}

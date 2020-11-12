@@ -1,0 +1,93 @@
+@import '../../App';
+
+.create-ride {
+    max-width: 520px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+        margin-bottom: 28px;
+    }
+
+    &__label {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #3C4856;
+        margin-bottom: 20px;
+    }
+
+    &__input-container {
+        display: flex;
+
+        >*:not(:last-child) {
+            margin-right: 25px;
+        }
+    }
+
+    &__input {
+        display: block;
+        background-color: rgba(#B9D7D5, 0.45);
+        border: none;
+        border-radius: 9px;
+        outline: none;
+        height: 56px;
+        width: 100%;
+        padding: 12px 24px;
+        font-size: 18px;
+        margin-bottom: 15px;
+
+        &.date {
+            max-width: 210px;
+        }
+
+        &::placeholder {
+            font-family: $font-family;
+        }
+    }
+
+    &__select {
+        margin-bottom: 15px;
+
+        &.small {
+            width: fit-content;
+        }
+    }
+
+    &__radio-row {
+        margin-bottom: 15px;
+
+        input[type="radio"] {
+            font-size: 20px;
+            line-height: 24px;
+            width: 16px;
+            height: 16px;
+        }
+
+
+        label {
+            margin-left: 6px;
+            font-size: 20px;
+            line-height: 24px;
+            color: #3C4856;
+        }
+    }
+
+    &__textarea {
+        display: block;
+        background-color: rgba(#B9D7D5, 0.45);
+        border: none;
+        border-radius: 9px;
+        outline: none;
+        height: 140px;
+        max-height: 140px;
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 18px;
+        margin-top: 25px;
+        margin-bottom: 40px;
+        resize: none;
+    }
+}
