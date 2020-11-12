@@ -5,10 +5,10 @@ import {Button} from "../../components/Button";
 import './SearchRides.scss';
 
 const selectOptions: Array<SelectOption> = [
-    { value: 1, label: '1' },
-    { value: 2, label: '2' },
-    { value: 3, label: '3' },
-    { value: 4, label: '4' }
+    { value: 1, label: 1 },
+    { value: 2, label: 2 },
+    { value: 3, label: 3 },
+    { value: 4, label: 4 }
 ];
 
 export const SearchRides = () => {
@@ -24,7 +24,6 @@ export const SearchRides = () => {
 
     const onSelectPassengerCount = (value: number) => {
         setPassengerCount(value);
-        console.log(value);
     }
 
     useEffect(() => {
@@ -72,7 +71,7 @@ export const SearchRides = () => {
             <div className="search-rides__label">Укажите количество человек и дату поездки </div>
             <div className="search-rides__input-container">
                 <div className="search-rides__select">
-                    <Select defaultValue='1' options={selectOptions} onChange={onSelectPassengerCount} />
+                    <Select defaultValue={1} options={selectOptions} onChange={onSelectPassengerCount} />
                 </div>
                 <input type="date" className="search-rides__input date"
                     onChange={event => setDate(event.target.value)} />

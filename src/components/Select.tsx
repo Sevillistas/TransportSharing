@@ -4,12 +4,18 @@ import showOptions from '../images/chooseButton.svg';
 
 export interface SelectOption {
     value: any;
-    label: string;
+    label: any;
 }
 
-export const Select = (props: any) => {
+interface SelectProps {
+    defaultValue: string | number;
+    options: SelectOption[];
+    onChange: any;
+}
 
-    const [value, setValue] = useState(props.defaultValue);
+export const Select = ({defaultValue, options, onChange} : SelectProps) => {
+
+    const [value, setValue] = useState(defaultValue);
     const [optionsVisible, setOptionsVisible] = useState(false);
     const [inputClass, setInputClass] = useState('');
 
@@ -28,12 +34,12 @@ export const Select = (props: any) => {
                 </div>
             </div>
             { optionsVisible && <div className="select__option-container">
-                { props.options.map((option: SelectOption) => {
+                { options.map((option: SelectOption) => {
                     return <div className='select__option' key={option.value} 
                     onClick={() => {
-                        setValue(option.label);
+                        setValue(option.value);
                         setOptionsVisible(!optionsVisible)
-                        props.onChange(option.label);
+                        onChange(option.value);
                     }}
                     >
                         {option.label}

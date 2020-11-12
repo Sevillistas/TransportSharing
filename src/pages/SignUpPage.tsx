@@ -13,8 +13,8 @@ export const SignUpPage = () => {
     const { width } = useWindowDimensions();
 
     const selectOptions: Array<SelectOption> = [
-        { value: 'man', label: 'М' },
-        { value: 'woman', label: 'Ж' },
+        { value: 'М', label: 'М' },
+        { value: 'Ж', label: 'Ж' },
     ]
 
     const [sex, setSex] = useState('');
