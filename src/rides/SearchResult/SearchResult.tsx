@@ -22,7 +22,7 @@ export const SearchResult = () => {
         <div className='search-result'>
             <div className="search-result__title">По вашему запросу найдено {plannedRides.length || '0'} поездки</div>
             <div className="search-result__container">
-                { plannedRides && plannedRides.map(ride => (<RideCard ride={ride} key={ride.date} searchResult={true} />)) }
+                { plannedRides && plannedRides.map(ride => (<RideCard ride={ride} key={ride.date} searchResult={true}/>)) }
             </div>
         </div>
     )

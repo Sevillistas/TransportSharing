@@ -5,7 +5,6 @@ import bannerImage from '../images/banner.png';
 import {useWindowDimensions} from '../hooks/windowresize.hook';
 import {Button, ButtonParams} from '../components/Button';
 import {useHistory} from 'react-router';
-import {signIn} from "../services/auth.service";
 
 export const SignInPage = () => {
 
@@ -43,18 +42,17 @@ export const SignInPage = () => {
     const signInButton: ButtonParams = {
         text: 'Вход',
         type: 'signin-mobile',
-        action: async() => {
-            if (validateForm()) {
-                await signIn(login, password).then(
-                    () => {
-                        history.push('/success');
-                    }, error => {
-                        console.log(error);
-                    }
-                );
-            } else {
-                console.log('Validation error');
-            }
+        // action: async() => {
+        //     await signIn(login, password).then(
+        //         () => {
+        //             history.push('/main/search');
+        //         }, error => {
+        //             console.log(error);
+        //         }
+        //     );
+        // }
+        action: () => {
+            setTimeout(() =>  history.push('/main/search-results', {auth: true}), 800);
         }
     }
 

@@ -12,7 +12,7 @@ export const RideTypes = () => {
 
     useEffect(() => {
         if (rideType) {
-            history.push('/main/search-form', {rideType});
+            setTimeout(() => history.push('/main/search-form', {rideType}), 120);
         }
     }, [rideType])
 

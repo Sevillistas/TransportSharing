@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {Button, ButtonParams} from './Button';
 import './styles/SignInForm.scss';
-import {signIn} from "../services/auth.service";
 import {useHistory} from "react-router";
 
 export const SignInForm = () => {
@@ -30,18 +29,21 @@ export const SignInForm = () => {
     const signInButton: ButtonParams = {
         text: 'Войти',
         type: 'signin',
-        action: async() => {
-            if (validateForm()) {
-                await signIn(login, password).then(
-                    () => {
-                        history.push('/success');
-                    }, error => {
-                        console.log(error);
-                    }
-                );
-            } else {
-                console.log('Validation error');
-            }
+        // action: async() => {
+        //     if (validateForm()) {
+        //         await signIn(login, password).then(
+        //             () => {
+        //                 history.push('/success');
+        //             }, error => {
+        //                 console.log(error);
+        //             }
+        //         );
+        //     } else {
+        //         console.log('Validation error');
+        //     }
+        // }
+        action: () => {
+            setTimeout(() =>  history.push('/main/search-results', {auth: true}), 800);
         }
     }
 

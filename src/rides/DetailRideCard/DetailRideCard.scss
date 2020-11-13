@@ -1,0 +1,67 @@
+.detail-ride-card {
+    max-width: 520px;
+
+    &__title{
+        font-weight: 800;
+        font-size: 25px;
+        line-height: 30px;
+        color: #3C4856;
+        margin-bottom: 30px;
+        //http://localhost:3000/main/ride/0290065f-3e8e-47f7-9511-f5a9a96b1a41
+    }
+
+    &__row {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #3C4856;
+        margin-bottom: 13px;
+
+        >span {
+            color: #A2BE9D;
+        }
+    }
+}
+
+.first-wrapper {
+    display: flex;
+
+    &__date {
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 30px;
+        color: #3C4856;
+        margin-bottom: 20px;
+    }
+
+    &__left {
+        flex: 6;
+    }
+
+    &__right {
+        flex: 4;
+
+        &__header {
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 26px;
+            color: #3C4856;
+        }
+    }
+}
+
+.Street {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 26px;
+    color: #3C4856;
+    margin-bottom: 4px;
+}
+
+.Distance {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 13px;
+    color: #3C4856;
+    margin-bottom: 20px;
+}

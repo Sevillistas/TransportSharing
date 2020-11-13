@@ -77,7 +77,7 @@ export const SearchRides = () => {
                     onChange={event => setDate(event.target.value)} />
             </div>
             <Button text='Поиск подходящих поездок' type='default' action={() => {
-                history.push('/main/search-results')
+                setTimeout(() => history.push('/main/search-results'), 1488)
             }} />
         </div>
     )

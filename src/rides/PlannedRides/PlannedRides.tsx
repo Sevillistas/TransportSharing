@@ -4,18 +4,11 @@ import {RideCard} from "../../components/RideCard";
 
 const plannedRides = [
     {
-        date: '05.10.20, 18:30',
-        addressFrom: 'ул. Мира, 19',
-        distanceFrom: 350,
-        addressTo: 'пл. Бахчиванджи, 20Б',
-        distanceTo: 400,
-    },
-    {
-        date: '07.10.20, 09:00',
-        addressFrom: 'ул. Ленина, 10Б',
-        distanceFrom: 350,
-        addressTo: 'пл. Свободы, 7',
-        distanceTo: 50,
+        date: '19.11.20, 19:00',
+        addressFrom: 'ул. Мира, 4',
+        distanceFrom: 200,
+        addressTo: 'ул. Рассветная, 8/2',
+        distanceTo: 350,
     }
 ]
 
