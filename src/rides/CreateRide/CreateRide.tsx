@@ -3,6 +3,7 @@ import './CreateRide.scss';
 import {Select, SelectOption} from "../../components/Select";
 import {Button} from "../../components/Button";
 import {useHistory} from "react-router";
+import {request} from "../../services/auth.service";
 
 const countPassengerOptions: Array<SelectOption> = Array.from({length: 8},
     (el, i) => ({value: ++i, label: i}));
@@ -81,6 +82,24 @@ export const CreateRide = () => {
     }
 
     const createRide = async() => {
+        const qstlRide = {
+            creatorId: 270398,
+            startAddress: {
+                x: 13.37,
+                y: 2.82
+            },
+            destinationAddress: {
+                x: 14.88,
+                y: 6.7
+            },
+            generalPassengersAmount: countPassenger,
+            dateTimeOfRide: new Date(date),
+            peopleWithCreator: countAdditionalPassenger,
+            transportType: rideType,
+            brand,
+            transportClass: classRide,
+            commentary: comment
+        }
         // const ride = {
         //     addressFrom,
         //     addressTo,
@@ -94,35 +113,7 @@ export const CreateRide = () => {
         //     classRide,
         //     comment
         // }
-        try {
-            const qstlRide = {
-                startAddress: {
-                    x: 13.37,
-                    y: 2.82
-                },
-                destinationAddress: {
-                    x: 14.88,
-                    y: 6.7
-                },
-                generalPassengersAmount: countPassenger,
-                peopleWithCreator: countAdditionalPassenger,
-                transportType: rideType,
-                brand,
-                transportClass: classRide,
-                commentary: comment
-            }
-            const response = await fetch('/create-ride', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(qstlRide)
-            })
-            const data = await response.json();
-            console.log(data)
-        } catch (e) {
-            console.log(e);
-        } finally {
-            history.push('/main/create-success');
-        }
+        const data = await request('/create-ride', 'POST', qstlRide);
     }
 
     return(

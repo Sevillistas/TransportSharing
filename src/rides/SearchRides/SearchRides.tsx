@@ -3,6 +3,9 @@ import {Select, SelectOption} from "../../components/Select";
 import {useHistory, useLocation} from "react-router";
 import {Button} from "../../components/Button";
 import './SearchRides.scss';
+import {request} from "../../services/auth.service";
+import {useDebounce} from "../../hooks/debounce.hook";
+import {geocode} from "../../services/yandex.service";
 
 const selectOptions: Array<SelectOption> = [
     { value: 1, label: 1 },
@@ -13,6 +16,12 @@ const selectOptions: Array<SelectOption> = [
 
 export const SearchRides = () => {
 
+    const [resultsFrom, setResultsFrom] = useState();
+    const [resultsTo, setResultsTo] = useState();
+
+    const [isSearchingFrom, setIsSearchingFrom] = useState(false);
+    const [isSearchingTo, setIsSearchingTo] = useState(false);
+
     const location = useLocation<any>();
     const history = useHistory<any>();
 
@@ -22,9 +31,36 @@ export const SearchRides = () => {
     const [rideType, setRideType] = useState('');
     const [passengerCount, setPassengerCount] = useState(0);
 
+    const debouncedFrom = useDebounce(from, 500);
+    const debouncedTo = useDebounce(to, 500);
+
     const onSelectPassengerCount = (value: number) => {
         setPassengerCount(value);
     }
+
+    useEffect(() => {
+        if (debouncedFrom) {
+            setIsSearchingFrom(true);
+            geocode(debouncedFrom).then(results => {
+                setIsSearchingFrom(false);
+                setResultsFrom(results);
+            });
+        } else {
+            setResultsFrom(null);
+        }
+    }, [debouncedFrom]);
+
+    useEffect(() => {
+        if (debouncedTo) {
+            setIsSearchingTo(true);
+            geocode(debouncedTo).then(results => {
+                setIsSearchingTo(false);
+                setResultsTo(results);
+            });
+        } else {
+            setResultsTo(null);
+        }
+    }, [debouncedTo]);
 
     useEffect(() => {
         if (history.location.state.rideType) {
@@ -41,23 +77,13 @@ export const SearchRides = () => {
     }, [location]);
 
     const searchRides = async() => {
-        try {
-            const rideInfo = {
-                startAddress: { x: 13.37, y: 2.28 },
-                destinationAddress: { x: 14.88, y: 3.22 },
-                peopleAmount: passengerCount,
-                rideDate: new Date(date)
-            };
-            const response = await fetch('/find-rides', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(rideInfo)
-            })
-            const data = await response.json();
-            console.log(data)
-        } catch (e) {
-            console.log(e);
+        const rideInfo = {
+            startAddress: resultsFrom.flat(),
+            destinationAddress: resultsTo.flat(),
+            peopleAmount: passengerCount,
+            rideDate: new Date(date)
         }
+        const data = await request('/find-rides', 'POST', rideInfo);
     }
 
     return (
@@ -76,9 +102,7 @@ export const SearchRides = () => {
                 <input type="date" className="search-rides__input date"
                     onChange={event => setDate(event.target.value)} />
             </div>
-            <Button text='Поиск подходящих поездок' type='default' action={() => {
-                setTimeout(() => history.push('/main/search-results'), 1488)
-            }} />
+            <Button text='Поиск подходящих поездок' type='default' action={() => searchRides()}/>
         </div>
     )
 }

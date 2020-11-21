@@ -5,6 +5,7 @@ import {Select, SelectOption} from '../components/Select';
 import plus from '../images/plus.svg'
 import {Button} from "../components/Button";
 import {useHistory} from "react-router";
+import {request} from "../services/auth.service";
 
 export const SignUpPage = () => {
 
@@ -17,12 +18,35 @@ export const SignUpPage = () => {
         { value: 'Ж', label: 'Ж' },
     ]
 
-    const [sex, setSex] = useState('');
+    const [gender, setGender] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+    const [name, setName] = useState('');
+    const [patrName, setPatrName] = useState('');
+    const [age, setAge] = useState(0);
+    const [logoUrl, setLogoUrl] = useState('');
 
-    const onSelectSex = (value: string) => {
-        setSex(value);
+    const onSelectGender = (value: string) => {
+        setGender(value);
         console.log(value);
     }
+
+    const register = async () => {
+        const data = await request('/registry', 'POST', {
+            email,
+            phoneNumber,
+            password,
+            repeatPassword,
+            name,
+            patrName,
+            age,
+            gender,
+            logoUrl
+        });
+    }
+
 
     if (width > 720) {
         return (
@@ -32,23 +56,30 @@ export const SignUpPage = () => {
                     <div className="signup-form__content">
                         <div className="signup-form__left-col">
                             <input type="text" className="signup-form__input"
-                            placeholder='Электронная почта' />
+                            placeholder='Электронная почта'
+                            onChange={(event) => setEmail(event.target.value)}/>
                             <input type="text" className="signup-form__input"
-                            placeholder='Номер телефона'/>
+                            placeholder='Номер телефона'
+                            onChange={(event) => setPhoneNumber(event.target.value)}/>
                             <input type="password" className="signup-form__input shrink"
-                            placeholder='Пароль'/>
+                            placeholder='Пароль'
+                            onChange={(event) => setPassword(event.target.value)}/>
                             <input type="password" className="signup-form__input shrink"
-                            placeholder='Повторите пароль'/>
+                            placeholder='Повторите пароль'
+                            onChange={(event) => setRepeatPassword(event.target.value)}/>
                         </div>
                         <div className="signup-form__right-col">
                             <input type="text" className="signup-form__input"
-                            placeholder='Имя'/>
+                            placeholder='Имя'
+                            onChange={(event) => setName(event.target.value)}/>
                             <input type="text" className="signup-form__input"
-                            placeholder='Отчество'/>
+                            placeholder='Отчество'
+                            onChange={(event) => setPatrName(event.target.value)}/>
                             <div className="signup-form__row">
                                 <input type="text" className="signup-form__input"
-                                placeholder='Возраст'/>
-                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectSex} />
+                                placeholder='Возраст'
+                                onChange={(event) => setAge(parseInt(event.target.value))}/>
+                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectGender} />
                             </div>
                             <div className="signup-form__row">
                                 <div className="signup-form__advice">
@@ -65,7 +96,7 @@ export const SignUpPage = () => {
                         </div>
                     </div>
                     <div className="signup-form__footer">
-                        <Button text={'Зарегистрироваться'} type={'signup'} action={() => history.push('/')}/>
+                        <Button text={'Зарегистрироваться'} type={'signup'} action={() => register()}/>
                         <div className="signup-form__info">
                             Нажимая “Зарегистрироваться”, Вы подтверждаете свое согласие<br/>
                             на обработку ваших <u>персональных данных</u>
