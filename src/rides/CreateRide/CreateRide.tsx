@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './CreateRide.scss';
 import {Select, SelectOption} from "../../components/Select";
 import {Button} from "../../components/Button";
 import {useHistory} from "react-router";
 import {request} from "../../services/auth.service";
+import {useDebounce} from "../../hooks/debounce.hook";
+import {geocode} from "../../services/yandex.service";
 
 const countPassengerOptions: Array<SelectOption> = Array.from({length: 8},
     (el, i) => ({value: ++i, label: i}));
+
+const countAdditionalPassengerOptions: Array<SelectOption> = Array.from({length: 8},
+    (el, i) => ({value: i, label: i++}));
 
 const hourOptions: Array<SelectOption> = Array.from({length: 24},
     (el, i) => ({value: i, label: i++}));
@@ -39,6 +44,12 @@ export const CreateRide = () => {
 
     const history = useHistory();
 
+    const [resultsFrom, setResultsFrom] = useState();
+    const [resultsTo, setResultsTo] = useState();
+
+    const [isSearchingFrom, setIsSearchingFrom] = useState(false);
+    const [isSearchingTo, setIsSearchingTo] = useState(false);
+
     const [addressFrom, setAddressFrom] = useState('');
     const [addressTo, setAddressTo] = useState('');
     const [countPassenger, setCountPassenger] = useState(0);
@@ -50,6 +61,33 @@ export const CreateRide = () => {
     const [brand, setBrand] = useState('');
     const [classRide, setClassRide] = useState('');
     const [comment, setComment] = useState('');
+
+    const debouncedFrom = useDebounce(addressFrom, 500);
+    const debouncedTo = useDebounce(addressTo, 500);
+
+    useEffect(() => {
+        if (debouncedFrom) {
+            setIsSearchingFrom(true);
+            geocode(debouncedFrom).then(results => {
+                setIsSearchingFrom(false);
+                setResultsFrom(results);
+            });
+        } else {
+            setResultsFrom(null);
+        }
+    }, [debouncedFrom]);
+
+    useEffect(() => {
+        if (debouncedTo) {
+            setIsSearchingTo(true);
+            geocode(debouncedTo).then(results => {
+                setIsSearchingTo(false);
+                setResultsTo(results);
+            });
+        } else {
+            setResultsTo(null);
+        }
+    }, [debouncedTo]);
 
     const onSelectCountPassenger = (value: number) => {
         setCountPassenger(value);
@@ -82,16 +120,10 @@ export const CreateRide = () => {
     }
 
     const createRide = async() => {
-        const qstlRide = {
+        const rideData = {
             creatorId: 270398,
-            startAddress: {
-                x: 13.37,
-                y: 2.82
-            },
-            destinationAddress: {
-                x: 14.88,
-                y: 6.7
-            },
+            startAddress: resultsFrom,
+            destinationAddress: resultsTo,
             generalPassengersAmount: countPassenger,
             dateTimeOfRide: new Date(date),
             peopleWithCreator: countAdditionalPassenger,
@@ -100,20 +132,7 @@ export const CreateRide = () => {
             transportClass: classRide,
             commentary: comment
         }
-        // const ride = {
-        //     addressFrom,
-        //     addressTo,
-        //     countPassenger,
-        //     date,
-        //     hour,
-        //     minute,
-        //     countAdditionalPassenger,
-        //     rideType,
-        //     brand,
-        //     classRide,
-        //     comment
-        // }
-        const data = await request('/create-ride', 'POST', qstlRide);
+        const data = await request('/create-ride', 'POST', rideData);
     }
 
     return(
@@ -141,7 +160,7 @@ export const CreateRide = () => {
             </div>
             <div className="create-ride__label">Сколько с Вами будет человек? <br/>(0 - если Вы один)</div>
             <div className="create-ride__select small">
-                <Select defaultValue={0} options={countPassengerOptions} onChange={onSelectCountAdditionalPassenger} />
+                <Select defaultValue={0} options={countAdditionalPassengerOptions} onChange={onSelectCountAdditionalPassenger} />
             </div>
             <div className="create-ride__label">При необходимости укажите параметры<br/>поездки</div>
             <div className="create-ride__radio-row">

@@ -78,8 +78,8 @@ export const SearchRides = () => {
 
     const searchRides = async() => {
         const rideInfo = {
-            startAddress: resultsFrom.flat(),
-            destinationAddress: resultsTo.flat(),
+            startAddress: resultsFrom,
+            destinationAddress: resultsTo,
             peopleAmount: passengerCount,
             rideDate: new Date(date)
         }

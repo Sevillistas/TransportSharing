@@ -24,18 +24,21 @@ interface YandexGeocodeResponse {
     }
 }
 
-export const geocode = async (address: string) => {
+export const geocode = async (address: string) : Promise<Point | null> => {
     const data: YandexGeocodeResponse = await request(`${geocodeUrl}?geocode=${address}&apikey=${apiKey}&format=json`);
     const coords = getCoords(data)
-    console.log('Координаты указанного адреса: ' ,coords);
-    return coords
+    console.log('Координаты указанного адреса: ', coords);
+    return coords;
 }
 
-export const getCoords = (geocodeData: YandexGeocodeResponse) => {
+const getCoords = (geocodeData: YandexGeocodeResponse) : Point | null  => {
     const geoObjectCollection = geocodeData.response.GeoObjectCollection;
 
     if(geoObjectCollection && geoObjectCollection.featureMember?.length) {
-        return geoObjectCollection.featureMember.map(el => el.GeoObject.Point.pos.split(' '))
+        const coords = geoObjectCollection.featureMember.map(el => el.GeoObject.Point.pos.split(' '))
             .map(el => ({x: parseFloat(el[0]), y: parseFloat(el[1])}));
+        return coords[0]; // TODO
+    } else {
+        return null;
     }
 }
