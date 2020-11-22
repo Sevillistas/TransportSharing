@@ -147,20 +147,20 @@ export const CreateRide = () => {
             <div className="create-ride__label">Укажите общее количество человек, дату<br/>и время поездки </div>
             <div className="create-ride__input-container">
                 <div className="create-ride__select">
-                    <Select defaultValue={1} options={countPassengerOptions} onChange={onSelectCountPassenger} />
+                    <Select initialState={{label: '1', value: 1}} options={countPassengerOptions} onChange={onSelectCountPassenger} />
                 </div>
                 <input type="date" className="create-ride__input date"
                    onChange={e => setDate(e.target.value)} />
                 <div className="create-ride__select">
-                    <Select defaultValue={12} options={hourOptions} onChange={onSelectHour} />
+                    <Select initialState={{label: '12', value: 12}} options={hourOptions} onChange={onSelectHour} />
                 </div>
                 <div className="create-ride__select">
-                    <Select defaultValue={'00'} options={minuteOptions} onChange={onSelectMinute} />
+                    <Select initialState={{label: '00', value: 0}} options={minuteOptions} onChange={onSelectMinute} />
                 </div>
             </div>
             <div className="create-ride__label">Сколько с Вами будет человек? <br/>(0 - если Вы один)</div>
             <div className="create-ride__select small">
-                <Select defaultValue={0} options={countAdditionalPassengerOptions} onChange={onSelectCountAdditionalPassenger} />
+                <Select initialState={{label: '0', value: 0}} options={countAdditionalPassengerOptions} onChange={onSelectCountAdditionalPassenger} />
             </div>
             <div className="create-ride__label">При необходимости укажите параметры<br/>поездки</div>
             <div className="create-ride__radio-row">
@@ -177,10 +177,11 @@ export const CreateRide = () => {
             </div>
             <div className="create-ride__input-container">
                 <div className="create-ride__select">
-                    <Select defaultValue={'Бренд'} options={ rideType === 'taxi' ? brandTaxiOptions : brandCarsharingOptions} onChange={onSelectBrand} />
+                    <Select initialState={{label: 'Бренд', value: null}}
+                        options={ rideType === 'taxi' ? brandTaxiOptions : brandCarsharingOptions} onChange={onSelectBrand} />
                 </div>
                 <div className="create-ride__select">
-                    <Select defaultValue={'Класс'} options={classOptions} onChange={onSelectClass} />
+                    <Select initialState={{label: 'Класс', value: null}} options={classOptions} onChange={onSelectClass} />
                 </div>
             </div>
             <textarea className="create-ride__textarea" placeholder='Комментарий'

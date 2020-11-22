@@ -97,7 +97,7 @@ export const SearchRides = () => {
             <div className="search-rides__label">Укажите количество человек и дату поездки </div>
             <div className="search-rides__input-container">
                 <div className="search-rides__select">
-                    <Select defaultValue={1} options={selectOptions} onChange={onSelectPassengerCount} />
+                    <Select initialState={{label: '1', value: 1}} options={selectOptions} onChange={onSelectPassengerCount} />
                 </div>
                 <input type="date" className="search-rides__input date"
                     onChange={event => setDate(event.target.value)} />

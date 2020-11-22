@@ -79,7 +79,7 @@ export const SignUpPage = () => {
                                 <input type="text" className="signup-form__input"
                                 placeholder='Возраст'
                                 onChange={(event) => setAge(parseInt(event.target.value))}/>
-                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectGender} />
+                                <Select initialState={{label: 'Пол', value: null}} options={selectOptions} onChange={onSelectGender} />
                             </div>
                             <div className="signup-form__row">
                                 <div className="signup-form__advice">

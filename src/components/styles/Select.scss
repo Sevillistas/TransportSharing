@@ -1,6 +1,7 @@
 .select {
     &-container {
         position: relative;
+        min-width: 70px;
     }
     &__input-field {
         display: flex;
@@ -22,6 +23,12 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
         }
     }
+
+    &__wrapper {
+        position: absolute;
+        min-width: 70px;
+        width: 100%;
+    }
     //&__value {
     //    margin-right: 19px;
     //}
@@ -35,19 +42,18 @@
         font-size: 16px;
         line-height: 20px;
         outline: none;
+        text-overflow: ellipsis;
+        overflow: hidden;
         &:last-child {
             border-bottom-right-radius: 9px;
             border-bottom-left-radius: 9px;
         }
 
         &-container {
-            position: absolute;
-            top: 56px; //equal to height of input
-            left: 0;
-            right: 0;
-            z-index: 100;
-            max-height: 112px;
-            overflow: auto;
+            max-height: 120px;
+            z-index: 500;
+            border-bottom-right-radius: 9px;
+            border-bottom-left-radius: 9px;
         }
     }
     &__arrow {
