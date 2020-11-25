@@ -17,10 +17,18 @@ export const SignUpPage = () => {
         { value: 'Ж', label: 'Ж' },
     ]
 
-    const [sex, setSex] = useState('');
+    const [gender, setGender] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeat, setRepeat] = useState('');
+    const [name, setName] = useState('');
+    const [patrName, setPatrName] = useState('');
+    const [age, setAge] = useState(0);
+    const [logoUrl, setLogoUrl] = useState('');
 
-    const onSelectSex = (value: string) => {
-        setSex(value);
+    const onSelectGender = (value: string) => {
+        setGender(value);
         console.log(value);
     }
 
@@ -32,23 +40,28 @@ export const SignUpPage = () => {
                     <div className="signup-form__content">
                         <div className="signup-form__left-col">
                             <input type="text" className="signup-form__input"
-                            placeholder='Электронная почта' />
+                            placeholder='Электронная почта'
+                            onChange={(e) => setEmail(e.target.value)}/>
                             <input type="text" className="signup-form__input"
-                            placeholder='Номер телефона'/>
+                            placeholder='Номер телефона'
+                            onChange={(e) => setPhoneNumber(e.target.value)}/>
                             <input type="password" className="signup-form__input shrink"
-                            placeholder='Пароль'/>
+                            placeholder='Пароль'
+                            onChange={(e) => setPassword(e.target.value)}/>
                             <input type="password" className="signup-form__input shrink"
-                            placeholder='Повторите пароль'/>
+                            placeholder='Повторите пароль'
+                            onChange={(e) => setRepeat(e.target.value)}/>
                         </div>
                         <div className="signup-form__right-col">
                             <input type="text" className="signup-form__input"
-                            placeholder='Имя'/>
+                            placeholder='Имя'
+                            />
                             <input type="text" className="signup-form__input"
                             placeholder='Отчество'/>
                             <div className="signup-form__row">
                                 <input type="text" className="signup-form__input"
                                 placeholder='Возраст'/>
-                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectSex} />
+                                <Select defaultValue='Пол' options={selectOptions} onChange={onSelectGender} />
                             </div>
                             <div className="signup-form__row">
                                 <div className="signup-form__advice">
