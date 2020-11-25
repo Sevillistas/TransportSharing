@@ -121,7 +121,7 @@ export const CreateRide = () => {
 
     const createRide = async() => {
         const rideData = {
-            creatorId: 270398,
+            creatorId: 1, // todo
             startAddress: resultsFrom,
             destinationAddress: resultsTo,
             generalPassengersAmount: countPassenger,
